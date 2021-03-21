@@ -56,7 +56,7 @@ const Timer = ({pomodoroTime, breakTime, longBreakTime, isOn}) => {
                                              seconds: "numeric",
                                           });
     console.log(phase, breakTimeCount, pomodoroCount, date)
-    if (phase === "Pomodoro") {
+    if (phase === "Pomodoro" && timeLeft) {
       if (pomodoroCount < 4) {
         console.log("Entering short break!")
         setPhase("Short Break")
@@ -66,12 +66,13 @@ const Timer = ({pomodoroTime, breakTime, longBreakTime, isOn}) => {
         setPhase("Long Break")
       }
       setEnd(getEnd())
-
+      setTimeLeft(getTimeLeft());
     } else if (phase === "Short Break" && breakTimeCount < 4){
       console.log("Entering Pomodoro")
       setPhase("Pomodoro")
       pomodoroTime += 1
       setEnd(getEnd())
+      setTimeLeft(getTimeLeft());
       // go back to pomodoro
     } else if (phase === "Long Break") {
       setPhase("End of Timer")
