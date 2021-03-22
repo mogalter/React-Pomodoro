@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import OptionList from './Components/OptionList'
-import Buttons from "./Components/Buttons"
 import Timer from "./Components/Timer"
 
 const App = () => {
   const [pomodoroTime, setPomodoroTime] = useState(1)
   const [breakTime, setBreakTime] = useState(1)
   const [longBreakTime, setLongBreakTime] = useState(1)
-  const [isOn, setIsOn] = useState(false)
 
   return (
     <div className="ui container" style={{marginTop: "10px"}}>
@@ -17,16 +15,10 @@ const App = () => {
         breakTime = {{ time: breakTime, setter: setBreakTime}}
         longBreak = {{ time: longBreakTime, setter: setLongBreakTime}}
       />
-      <Buttons startText="Start"
-               stopText="Pause"
-               setIsOn={setIsOn}
-               isOn={isOn} />
-      <hr />
       <div className="pomodoro">
         <Timer pomodoroTime={pomodoroTime*60}
                breakTime={breakTime*60}
                longBreakTime={longBreakTime*60}
-               isOn={isOn}
         />
       </div>
       <hr/>

@@ -1,16 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import TimerCSS from './Timer.css'
+import Buttons from "./Buttons"
 
-const Timer = ({pomodoroTime, breakTime, longBreakTime, isOn}) => {
+const Timer = ({pomodoroTime, breakTime, longBreakTime}) => {
 
   const [phase, setPhase] = useState("Session")
-  var [pomodoroCount, breakTimeCount] = [1, 0]
+  var pomodoroCount = 1
+  const [isOn, setIsOn] = useState(false)
   const [timeLeft, setTimeLeft] = useState(pomodoroTime)
   var timerId = false
   // get seconds by multiplying time by 60
 
   const getCycleTime = () => {
-    console.log(pomodoroTime, breakTime, longBreakTime)
     if (phase === "Session") {
       console.log("Returning session time of", pomodoroTime)
       return pomodoroTime
@@ -31,13 +32,11 @@ const Timer = ({pomodoroTime, breakTime, longBreakTime, isOn}) => {
   }
 
   const updateTime = () => {
-    console.log(timeLeft)
     if (timeLeft === 0) {
       if (phase === "Session") {
         if (pomodoroCount < 4) {
           console.log("Setting as short break")
           setPhase("Short Break")
-          breakTimeCount += 1
         } else {
           setPhase("Long Break")
         }
@@ -72,18 +71,29 @@ const Timer = ({pomodoroTime, breakTime, longBreakTime, isOn}) => {
       return [minutes, seconds]
   }
 
+  const Reset = () => {
+    setPhase("Session")
+    pomodoroCount=1
+  }
+
   const [minutes, seconds] = transformSeconds()
 
   return (
-    <div className="timerContainer">
-      { isOn ?
-        <div>
-          <h1 className="ui header">{phase}</h1>
-          <p className="timer">
-            {minutes} : {seconds}
-          </p>
-        </div>: <p className="timer">PAUSED</p>
-      }
+    <div>
+      <Buttons startText="Start"
+           stopText="Pause"
+           setIsOn={setIsOn}
+           isOn={isOn} />
+      <hr/>
+      <div className="timerContainer">
+        <h1 className="ui header">{phase}</h1>
+        { isOn ?
+            <p className="timer">
+              {minutes} : {seconds}
+            </p>
+          : <p className="timer">PAUSED</p>
+        }
+      </div>
     </div>
   );
 }
