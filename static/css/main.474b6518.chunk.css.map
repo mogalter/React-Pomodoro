@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/Components/Timer.css"],"names":[],"mappings":"AAAA,gBACE,iBACF,CAEA,OACE,cACF","file":"main.474b6518.chunk.css","sourcesContent":[".timerContainer {\r\n  text-align: center;\r\n}\r\n\r\n.timer {\r\n  font-size: 400%\r\n}\r\n"]}
