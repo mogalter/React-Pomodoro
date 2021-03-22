@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 
-const Buttons = ({greenText, yellowText, redText, setIsOn}) => {
+const Buttons = ({startText, stopText, setIsOn, isOn}) => {
   return (
     <div style={{padding : "10px 0px 10px 0px", textAlign: "center"}}>
-      <button className="ui green button" onClick={() => {
-        setIsOn(true)
-      }}>{greenText}</button>
-      <button className="ui yellow button" onClick={() => {
-        setIsOn(false)
-      }}>{yellowText}</button>
-      <button className="ui red button">{redText}</button>
+      <button className={`ui ${isOn ? 'red' : 'green'} button`} onClick={() => {
+        setIsOn(!isOn)
+      }}>{`${isOn ? stopText : startText}`}</button>
     </div>
   )
 }

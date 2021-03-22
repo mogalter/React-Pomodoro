@@ -5,12 +5,13 @@ const Option = ({labelName, value, setTime}) => {
   return (
     <div className="ui labeled input" style={{padding : "5px"}}>
       <div className="ui label">{labelName}</div>
-      <input type="text"
+      <input type="number"
+             min="1"
              value={term}
              onChange={(e) => {
                setTerm(e.target.value)
                setTime(e.target.value)
-             }} 
+             }}
              />
     </div>
   )
