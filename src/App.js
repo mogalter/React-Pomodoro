@@ -3,9 +3,9 @@ import OptionList from './Components/OptionList'
 import Timer from "./Components/Timer"
 
 const App = () => {
-  const [pomodoroTime, setPomodoroTime] = useState(1)
-  const [breakTime, setBreakTime] = useState(1)
-  const [longBreakTime, setLongBreakTime] = useState(1)
+  const [pomodoroTime, setPomodoroTime] = useState(25)
+  const [breakTime, setBreakTime] = useState(5)
+  const [longBreakTime, setLongBreakTime] = useState(15)
 
   return (
     <div className="ui container" style={{marginTop: "10px"}}>
